@@ -1,0 +1,26 @@
+<mat-toolbar>To do list:</mat-toolbar>
+<mat-card class="todocard">
+    <form class="example-form">
+        <mat-form-field class="full-width">
+            <input matInput class="textareafull" required [(ngModel)]="inputValue.content" name="inputValue">
+        </mat-form-field>
+        <span class="example-spacer"></span>
+        <button mat-button mat-raised-button color="primary" (click)="addNewItem()" *ngIf="!editValue">Add</button>
+        <button mat-button mat-raised-button color="sucess" (click)="saveNewItem()" *ngIf="editValue">Save</button>
+    </form>
+
+    <mat-list role="list">
+
+        <mat-toolbar *ngFor="let item of allTaskList" class="todoitem" color="primary">
+            <mat-toolbar-row>
+
+                <span>{{item.content}}</span>
+                <mat-icon (click)="editItem(item)" class="btn"> edit</mat-icon>
+                <mat-icon (click)="deleteItem(item.id)" class="btn">delete</mat-icon>
+            </mat-toolbar-row>
+        </mat-toolbar>
+
+    </mat-list>
+
+
+</mat-card>
